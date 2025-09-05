@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kameos - Naturheilpraxis für Osteopathie - Kerstin Kammhuber</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+    header {
+      background-color: #a0e9fa;
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    header img {
+      height: 60px;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    nav {
+      background-color: #a0e9fa;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.5rem;
+      flex-wrap: wrap; /* Navigation passt sich an kleine Bildschirme an */
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: text-decoration 0.3s ease;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .background-wrapper {
+      background-image: url('Lavendel.jpg'); /* Dein Bild */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 2rem 0;
+      flex: 1;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.8); /* leicht transparenter Hintergrund */
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      color: black;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: #b0a7a7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #a0e9fa;
+      color: white;
+    }
+
+    /* 📱 Mobile-Optimierung */
+    @media (max-width: 768px) {
+      main {
+        padding: 1rem;
+      }
+      nav {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div style="text-align: center;">
+    <!-- <img src="logo.jpeg" alt="Praxislogo" style="height: 80px; margin-bottom: 0.5rem;"> -->
+    <h1 style="margin: 0;">Kameos - Naturheilpraxis für Osteopathie</h1>
+    <p style="margin: 0; color: grey">Kerstin Kammhuber</p>
+  </div>
+</header>
+
+<nav>
+  <a href="index.html">Startseite</a>
+  <a href="Über Mich.html">Über Mich</a>
+  <a href="Was ist Ostheopathie.html">Was ist Osteopathie?</a>
+  <a href="Wie wirkt die Osteopathie.html">Wie wirkt die Osteopathie?</a>
+  <a href="Anwendungsbereiche.html">Selbstfürsorge</a>
+  <a href="kontakt.html">Kontakt</a>
+</nav>
+
+<div class="background-wrapper">
+  <main>
+    <section id="info">
+      <h2>Selbstfürsorge</h2>
+      <p>Inhalt zu Selbstfürsorge folgt...</p>
+    </section>
+  </main>
+</div>
+
+<footer>
+  &copy; 2025 Kameos Naturheilpraxis für Osteopathie - Kerstin Kammhuber | Impressum
+</footer>
+</body>
+</html>
