@@ -8,13 +8,16 @@
     html, body {
       height: 100%;
       margin: 0;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
       font-family: Arial, sans-serif;
       color: #333;
     }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---------- HEADER ---------- */
     header {
       background-color: #a0e9fa;
       color: white;
@@ -24,31 +27,43 @@
       align-items: center;
       text-align: center;
     }
-    header img {
-      height: 60px;
-      margin-left: 1rem;
-      margin-right: 1rem;
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;   /* Einheitlich */
     }
+
+    header p {
+      margin: 0.3rem 0 0 0;
+      font-size: 1.1rem; /* Einheitlich */
+      color: grey;
+    }
+
+    /* ---------- NAV ---------- */
     nav {
       background-color: #a0e9fa;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 2rem;
-      padding: 0.5rem;
-      flex-wrap: wrap; /* Navigation passt sich an kleine Bildschirme an */
+      padding: 0.8rem 0;
     }
+
     nav a {
+      font-size: 1rem;
       color: white;
       text-decoration: none;
       font-weight: bold;
       transition: text-decoration 0.3s ease;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
 
+    /* ---------- MAIN ---------- */
     .background-wrapper {
-      background-image: url('Lavendel.jpg'); /* Dein Bild */
+      background-image: url('Lavendel.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -59,7 +74,7 @@
     main {
       max-width: 1000px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.8); /* leicht transparenter Hintergrund */
+      background: rgba(255, 255, 255, 0.8);
       padding: 2rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       color: black;
@@ -73,6 +88,7 @@
       color: #b0a7a7;
     }
 
+    /* ---------- FOOTER ---------- */
     footer {
       text-align: center;
       padding: 1rem;
@@ -80,23 +96,36 @@
       color: white;
     }
 
-    /* 📱 Mobile-Optimierung */
+    /* ---------- MOBILE ---------- */
     @media (max-width: 768px) {
-      main {
-        padding: 1rem;
-      }
-      nav {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
       header h1 {
         font-size: 1.5rem;
       }
       header p {
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
+
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      nav a {
+        display: block;
+        text-align: center;
+      }
+
       h2 {
         font-size: 1.3rem;
+      }
+
+      main {
+        padding: 1rem;
+      }
+
+      .zitat {
+        font-size: 1rem;
       }
     }
   </style>
@@ -104,10 +133,9 @@
 
 <body>
 <header>
-  <div style="text-align: center;">
-    <!-- <img src="logo.jpeg" alt="Praxislogo" style="height: 80px; margin-bottom: 0.5rem;"> -->
-    <h1 style="margin: 0;">Kameos - Naturheilpraxis für Osteopathie</h1>
-    <p style="margin: 0; color: grey">Kerstin Kammhuber</p>
+  <div>
+    <h1>Kameos - Naturheilpraxis für Osteopathie</h1>
+    <p>Kerstin Kammhuber</p>
   </div>
 </header>
 
