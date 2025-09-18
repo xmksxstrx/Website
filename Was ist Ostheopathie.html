@@ -8,13 +8,16 @@
     html, body {
       height: 100%;
       margin: 0;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
       font-family: Arial, sans-serif;
       color: #333;
     }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---------- HEADER ---------- */
     header {
       background-color: #a0e9fa;
       color: white;
@@ -24,33 +27,41 @@
       align-items: center;
       text-align: center;
     }
-    header img {
-      height: 60px;
-      margin-left: 1rem;
-      margin-right: 1rem;
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem; /* Einheitlich */
     }
-    header div {
-      flex-grow: 1;
-      text-align: center;
+
+    header p {
+      margin: 0.3rem 0 0 0;
+      font-size: 1.1rem; /* Einheitlich */
+      color: grey;
     }
+
+    /* ---------- NAVIGATION ---------- */
     nav {
       background-color: #a0e9fa;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 2rem;
-      padding: 0.5rem;
-      flex-wrap: wrap; /* wichtig fürs Handy */
+      padding: 0.8rem 0;
     }
+
     nav a {
+      font-size: 1rem; /* Einheitlich */
       color: white;
       text-decoration: none;
       font-weight: bold;
       transition: text-decoration 0.3s ease;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
 
+    /* ---------- HAUPTBEREICH ---------- */
     .background-wrapper {
       background-image: url('Lavendel.jpg');
       background-size: cover;
@@ -76,13 +87,10 @@
     h2 {
       color: #b0a7a7;
     }
-    .bild-text-block h2 {
-      margin-top: 1rem;
-    }
 
     .bild-text-block {
       display: flex;
-      align-items: flex-start; 
+      align-items: flex-start;
       gap: 2rem;
       margin-bottom: 2rem;
       flex-wrap: wrap;
@@ -94,8 +102,6 @@
       border-radius: 20px;
       flex-shrink: 0;
       display: block;
-      margin-top: 0.25em;
-      transform: translateY(+60px);
     }
 
     .bild-text-block div {
@@ -103,6 +109,7 @@
       min-width: 250px;
     }
 
+    /* ---------- FOOTER ---------- */
     footer {
       text-align: center;
       padding: 1rem;
@@ -110,22 +117,41 @@
       color: white;
     }
 
-    /* 📱 Handy-Optimierung */
+    /* ---------- MOBILE ---------- */
     @media (max-width: 768px) {
-      .bild-text-block {
-        flex-direction: column; /* Bild über Text */
-        align-items: center;
+      header h1 {
+        font-size: 1.5rem;
       }
-
-      .bild-text-block img {
-        width: 100%;  /* Bild passt sich an Bildschirmbreite an */
-        height: auto;
-        transform: none; /* kein verschieben mehr */
-        margin: 0 0 1rem 0;
+      header p {
+        font-size: 0.9rem;
       }
 
       nav {
-        gap: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      nav a {
+        display: block;
+        text-align: center;
+      }
+
+      .bild-text-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+      }
+
+      .bild-text-block img {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        margin: 0 auto 1rem auto;
+      }
+
+      main {
+        padding: 1rem;
       }
     }
   </style>
@@ -133,39 +159,38 @@
 
 <body>
 <header>
-  <div style="text-align: center;">
-    <!-- <img src="logo.jpeg" alt="Praxislogo" style="height: 80px; margin-bottom: 0.5rem;"> -->
-    <h1 style="margin: 0;">Kameos - Naturheilpraxis für Osteopathie</h1>
-    <p style="margin: 0; color: grey">Kerstin Kammhuber</p>
+  <div>
+    <h1>Kameos - Naturheilpraxis für Osteopathie</h1>
+    <p>Kerstin Kammhuber</p>
   </div>
 </header>
 
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="Über Mich.html">Über Mich</a>
-    <a href="Was ist Ostheopathie.html">Was ist Osteopathie?</a>
-    <a href="Wie wirkt die Osteopathie.html">Wie wirkt die Osteopathie?</a>
-    <a href="Anwendungsbereiche.html">Selbstfürsorge</a>
-    <a href="kontakt.html">Kontakt</a>
-  </nav>
+<nav>
+  <a href="index.html">Startseite</a>
+  <a href="Über Mich.html">Über Mich</a>
+  <a href="Was ist Ostheopathie.html">Was ist Osteopathie?</a>
+  <a href="Wie wirkt die Osteopathie.html">Wie wirkt die Osteopathie?</a>
+  <a href="Anwendungsbereiche.html">Selbstfürsorge</a>
+  <a href="kontakt.html">Kontakt</a>
+</nav>
 
- <div class="background-wrapper">
-    <main>
-      <section class="bild-text-block">
-        <img src="Bild5.jpg" alt="Praxisraum">
-        <div>
-          <h2>Was ist Osteopathie</h2>
-          <p>Die Osteopathie ist eine ganzheitliche medizinische Behandlungsmethode, die auf dem Prinzip beruht, dass der Körper als Einheit betrachtet werden sollte. Die Geschichte eines Menschen und dessen Körper sind dabei von großer Bedeutung.</p> 
-          <p>Welche Verletzungen, Traumata, wiederkehrender Stress unterlag dieser Mensch im Verlauf des Lebens und was davon, hat möglicherweise Spuren hinterlassen? Einschränkungen unserer Gesundheit entstehen über einen längeren Zeitraum.</p>
-          <p>Dies fängt bereits mit dem Lebensbeginn an. Die Osteopathie macht es möglich, diese Spuren im Körper aufzufinden und zu behandeln. Das Ziel der Osteopathie ist es, Bewegungseinschränkungen und Funktionsstörungen mit gezielten sanften Techniken zu lösen und die Selbstheilungskräfte des Körpers zu aktivieren. Dem Menschen mehr Vitalität zu geben.</p> 
-          <p>Die Osteopathie hat sich als effektive und sichere Behandlungsmethode etabliert und wird als Ergänzung zur Schulmedizin angesehen.</p>
-        </div>
-      </section>
-    </main>
-  </div>
+<div class="background-wrapper">
+  <main>
+    <section class="bild-text-block">
+      <img src="Bild5.jpg" alt="Praxisraum">
+      <div>
+        <h2>Was ist Osteopathie</h2>
+        <p>Die Osteopathie ist eine ganzheitliche medizinische Behandlungsmethode, die auf dem Prinzip beruht, dass der Körper als Einheit betrachtet werden sollte. Die Geschichte eines Menschen und dessen Körper sind dabei von großer Bedeutung.</p> 
+        <p>Welche Verletzungen, Traumata, wiederkehrender Stress unterlag dieser Mensch im Verlauf des Lebens und was davon, hat möglicherweise Spuren hinterlassen? Einschränkungen unserer Gesundheit entstehen über einen längeren Zeitraum.</p>
+        <p>Dies fängt bereits mit dem Lebensbeginn an. Die Osteopathie macht es möglich, diese Spuren im Körper aufzufinden und zu behandeln. Das Ziel der Osteopathie ist es, Bewegungseinschränkungen und Funktionsstörungen mit gezielten sanften Techniken zu lösen und die Selbstheilungskräfte des Körpers zu aktivieren. Dem Menschen mehr Vitalität zu geben.</p> 
+        <p>Die Osteopathie hat sich als effektive und sichere Behandlungsmethode etabliert und wird als Ergänzung zur Schulmedizin angesehen.</p>
+      </div>
+    </section>
+  </main>
+</div>
 
-  <footer>
-    &copy; 2025 Kameos Naturheilpraxis für Osteopathie - Kerstin Kammhuber | Impressum
-  </footer>
+<footer>
+  &copy; 2025 Kameos Naturheilpraxis für Osteopathie - Kerstin Kammhuber | Impressum
+</footer>
 </body>
 </html>
