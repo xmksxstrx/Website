@@ -15,34 +15,88 @@
 
   body {
     background: #fff;
+ 
+
+
+
+
+
+Du:
+bitte so anpassen
+
+
+ChatGPT:
+Alles klar 👍 ich habe deinen Code so angepasst, dass Header (h1, p) und Navigation auf dem Handy genauso skalieren wie bei der index.html.
+Der Aufbau bleibt exakt so wie bei dir, nur die mobile Styles sind vereinheitlicht.
+
+Hier der fertige Code:
+
+html
+Code kopieren
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kameos - Naturheilpraxis für Osteopathie - Kerstin Kammhuber</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #333;
   }
 
+  body {
+    background: #fff;
+  }
+
+  /* ---------- HEADER ---------- */
   header {
     background-color: #a0e9fa;
     color: white;
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 
+  header h1 {
+    margin: 0;
+    font-size: 2rem; /* Einheitlich */
+  }
+
+  header p {
+    margin: 0.3rem 0 0 0;
+    font-size: 1.1rem; /* Einheitlich */
+    color: grey;
+  }
+
+  /* ---------- NAVIGATION ---------- */
   nav {
     background-color: #a0e9fa;
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    padding: 0.5rem;
     flex-wrap: wrap;
+    gap: 2rem;
+    padding: 0.8rem 0;
   }
 
   nav a {
+    font-size: 1rem; /* Einheitlich */
     color: white;
     text-decoration: none;
     font-weight: bold;
     transition: text-decoration 0.3s ease;
   }
+
   nav a:hover {
     text-decoration: underline;
   }
 
+  /* ---------- HAUPTINHALT ---------- */
   .background-wrapper {
     background-image: url('Lavendel.jpg');
     background-size: cover;
@@ -56,16 +110,9 @@
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.8);
     padding: 2rem;
-    padding-bottom: 6rem; /* extra Platz für Footer */
+    padding-bottom: 6rem;
     color: black;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-
-  footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #a0e9fa;
-    color: white;
   }
 
   .bild-text-block {
@@ -101,10 +148,43 @@
     color: black;
   }
 
-  /* Mobile-Optimierung */
+  /* ---------- FOOTER ---------- */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #a0e9fa;
+    color: white;
+  }
+
+  /* ---------- MOBILE-OPTIMIERUNG ---------- */
   @media (max-width: 768px) {
+    header h1 {
+      font-size: 1.5rem;
+    }
+    header p {
+      font-size: 0.9rem;
+    }
+
+    nav {
+      gap: 0.5rem;
+      flex-direction: column;
+      align-items: center;
+    }
+    nav a {
+      display: block;
+      text-align: center;
+    }
+
+    main {
+      padding: 1rem;
+    }
+
+    .zitat {
+      font-size: 1rem;
+    }
+
     .bild-text-block {
-      flex-direction: column; /* Bilder und Text untereinander */
+      flex-direction: column;
       align-items: center;
       text-align: left;
     }
@@ -115,23 +195,15 @@
       height: auto;
       margin: 0 auto;
     }
-
-    main {
-      padding: 1rem;
-    }
-
-    nav {
-      gap: 1rem;
-    }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div style="text-align: center;">
-    <h1 style="margin: 0;">Kameos - Naturheilpraxis für Osteopathie</h1>
-    <p style="margin: 0; color: grey">Kerstin Kammhuber</p>
+  <div>
+    <h1>Kameos - Naturheilpraxis für Osteopathie</h1>
+    <p>Kerstin Kammhuber</p>
   </div>
 </header>
 
@@ -146,7 +218,7 @@
 
 <div class="background-wrapper">
   <main>
-
+  
     <section class="bild-text-block">
       <img src="Hochkant.jpg" alt="Praxisraum">
       <div>
@@ -166,12 +238,11 @@
         <h2>Wer steckt hinter Kameos</h2>
         <p>seit 2010 bin ich als Medizinische Fachangstelltin in der Kinderarztpraxis. Zuerst bei Dr. Hartig in Vilsbiburg und bis heute bei Dr. Westphal in Taufkirchen. Ich liebe den Kontakt zu Menschen, vor allem zu Kindern. Ich möchte jedem Patienten die Zeit geben, die er benötigt und mich gegen die aktuelle Zeit stellen, die dominiert wird durch Druck um Zeit und Geld. Vor allem gegen das Idealbild von "der Mensch muss perfekt sein". Im Unperfekten liegt das Perfekte und in der Achtsamkeit der Gewinn.</p>
         <p>Während ich nebenberuflich in der Ergotherapie tätig war, konnte ich feststellen, welche tollen Auswirkungen eine Arbeit hat, die mit nichts anderen als den Händen durchgeführt wird und vor allem wie der Körper reagiert, wenn er nur etwas Zeit und Geduld bekommt. Auf der Suche, wirklich etwas bewirken zu können, den Menschen ein klein bisschen Leid zu nehmen und weil mir mein Wissen irgendwann nicht mehr genug war, habe ich 2020 2 Jahre die Heilpraktikerschule besucht und anschließend vom Gesundheitsamt die Erlaubnis zur Ausübung der Heilkunde erhalten. Die letzten Jahre habe ich diversen Weiterbildungen in der Ernährung nach TCM, in der Spagyrik und Phytotherapie absolviert. Seit 2022 bereichere ich mich selbst mit der Weiterbildung als Osteopathin und habe ebenso eine Ausbildung in der Homöopathie begonnen. Die Kombination Schulmedizin zur Alternativmedizin ist für mich der richtige Ansatzpunkt.</p>
-        <p>Ich nicht wie eine Ibuprofen, die sofort vermeintlich alles wegzaubern kann. Jedoch mit etwas Geduld und Eigenwillen, können wir Veränderungen bewirken. Genau diese Veränderungen - seien sie auch noch so klein - bereiten mir die größten Glücksmomente. </p>
+        <p>Ich bin nicht wie eine Ibuprofen, die sofort vermeintlich alles wegzaubern kann. Jedoch mit etwas Geduld und Eigenwillen, können wir Veränderungen bewirken. Genau diese Veränderungen - seien sie auch noch so klein - bereiten mir die größten Glücksmomente. </p>
         <p>Wer ich sonst noch bin? Wenn mich jemand fragt, wofür mein Herz außerhalb der Medizin schlägt, so würde ich antworten: für die Natur, für das Reisen, für gutes Essen, für alle kreativen Gestaltungsmöglichkeiten, für die Musik und meine Liebsten. Wenn mich jemand fragt, wo ich am liebsten bin, so würde ich antworten: am Wasser oder in den Bergen. Wenn mich jemand fragt, welcher Ort für mich der Schönste ist, so würde ich antworten: mein Garten inklusiv meiner vielen kleinen Gartenbewohner.</p>
       </div>
       <img src="Hochkant1.jpg" alt="Praxisraum">
     </section>
-
   </main>
 </div> 
 
