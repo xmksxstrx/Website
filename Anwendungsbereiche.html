@@ -30,12 +30,12 @@
 
     header h1 {
       margin: 0;
-      font-size: 2rem;   /* Einheitlich */
+      font-size: 2rem;
     }
 
     header p {
       margin: 0.3rem 0 0 0;
-      font-size: 1.1rem; /* Einheitlich */
+      font-size: 1.1rem;
       color: grey;
     }
 
@@ -63,7 +63,7 @@
 
     /* ---------- MAIN ---------- */
     .background-wrapper {
-      background-image: url('Lavendel.JPG');
+      background-image: url('Lavendel.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -86,6 +86,22 @@
 
     h2 {
       color: #b0a7a7;
+    }
+
+    /* ---------- DOWNLOAD LINKS ---------- */
+    .downloads a {
+      display: inline-block;
+      margin: 0.5rem 0;
+      padding: 0.6rem 1rem;
+      background-color: #a0e9fa;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .downloads a:hover {
+      background-color: #559fd6;
     }
 
     /* ---------- FOOTER ---------- */
@@ -123,10 +139,6 @@
       main {
         padding: 1rem;
       }
-
-      .zitat {
-        font-size: 1rem;
-      }
     }
   </style>
 </head>
@@ -145,7 +157,7 @@
   <a href="Was ist Ostheopathie.html">Was ist Osteopathie?</a>
   <a href="Wie wirkt die Osteopathie.html">Wie wirkt die Osteopathie?</a>
   <a href="Anwendungsbereiche.html">Selbstfürsorge</a>
-  <a href="Kontakt.html">Kontakt</a>
+  <a href="kontakt.html">Kontakt</a>
 </nav>
 
 <div class="background-wrapper">
@@ -158,6 +170,15 @@
       <p>Beende das selbstzerstörerische Verhalten. Wenn du damit aufhörst Dinge zu tun, von denen du weißt, dass sie dir nichts Gutes bringen, dann wirst du automatisch gesündere Entscheidungen treffen.</p> 
       <p>Hier findest du ein paar Informationen, wie du deine Gesundheit und deinen Heilungserfolg verbessern kannst:</p>
     </section>
+
+    <!--PDF Download -->
+    <section class="downloads">
+      <h2>Downloads</h2>
+      <a href="BEWEGUNG.pdf" download>📄 PDF 1 herunterladen</a><br>
+      <a href="ESSEN.pdf" download>📄 PDF 2 herunterladen</a><br>
+      <a href="ACHTSAMKEIT.pdf" download>📄 PDF 3 herunterladen</a>
+    </section>
+
   </main>
 </div>
 
@@ -166,6 +187,3 @@
 </footer>
 </body>
 </html>
-
-
-
