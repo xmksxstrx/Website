@@ -30,12 +30,12 @@
 
     header h1 {
       margin: 0;
-      font-size: 2rem; /* Einheitlich */
+      font-size: 2rem;
     }
 
     header p {
       margin: 0.3rem 0 0 0;
-      font-size: 1.1rem; /* Einheitlich */
+      font-size: 1.1rem;
       color: grey;
     }
 
@@ -50,7 +50,7 @@
     }
 
     nav a {
-      font-size: 1rem; /* Einheitlich */
+      font-size: 1rem;
       color: white;
       text-decoration: none;
       font-weight: bold;
@@ -63,7 +63,7 @@
 
     /* ---------- HAUPTBEREICH ---------- */
     .background-wrapper {
-      background-image: url('Lavendel.JPG');
+      background-image: url('Lavendel.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -86,6 +86,7 @@
 
     h2 {
       color: #b0a7a7;
+      margin-bottom: 0.5rem;
     }
 
     .bild-text-block {
@@ -96,12 +97,14 @@
       flex-wrap: wrap;
     }
 
+    /* 🔹 Hier wird das Bild bündig mit dem ersten Satz (nicht Überschrift) gesetzt */
     .bild-text-block img {
       width: 380px;
-      height: 250px;
+      height: auto;
       border-radius: 20px;
       flex-shrink: 0;
       display: block;
+      margin-top: 4.0em; /* sorgt für bündigen Start mit erstem Absatz */
     }
 
     .bild-text-block div {
@@ -171,7 +174,7 @@
   <a href="Was ist Ostheopathie.html">Was ist Osteopathie?</a>
   <a href="Wie wirkt die Osteopathie.html">Wie wirkt die Osteopathie?</a>
   <a href="Anwendungsbereiche.html">Selbstfürsorge</a>
-  <a href="Kontakt.html">Kontakt</a>
+  <a href="kontakt.html">Kontakt</a>
 </nav>
 
 <div class="background-wrapper">
@@ -194,5 +197,3 @@
 </footer>
 </body>
 </html>
-
-
