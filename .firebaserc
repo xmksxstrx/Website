@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "kameos-ostheopatie"
-  }
+    "default": "kameos-osteopathie",
+    "live": "kameos-osteopathie"
+  },
+  "targets": {},
+  "etags": {}
 }
