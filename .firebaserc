@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "kameos-osteopathie",
+    "default": "",
     "live": "kameos-osteopathie"
   },
   "targets": {},
