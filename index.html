@@ -28,8 +28,23 @@ body { display:flex; flex-direction:column; min-height:100vh; }
   width:min(70vw, 380px); height:auto;
   background:transparent; margin-bottom:1.2rem;
 }
+/* Angelina für Willkommen-Untertitel: lokale Datei wird geladen, falls vorhanden, sonst lokale Installation / Handschrift-Fallback */
+@font-face {
+  font-family: 'Angelina';
+  src: url('AngelinaHandwriting.woff2') format('woff2'),
+       url('AngelinaHandwriting.woff') format('woff'),
+       url('AngelinaHandwriting.ttf') format('truetype'),
+       url('angelina.woff2') format('woff2'),
+       url('angelina.woff') format('woff'),
+       url('angelina.ttf') format('truetype');
+  font-display: swap;
+}
 #splash h1 { margin:0.2rem 0; font-size:2rem; color:#333; }
-#splash p { margin:0.3rem 0 1.5rem 0; font-size:1.2rem; color:#555; }
+#splash p {
+  margin:0.3rem 0 1.5rem 0;
+  font-family: 'Angelina', 'Segoe Script', 'Brush Script MT', 'Snell Roundhand', cursive;
+  font-size:2rem; line-height:1.3; color:#555;
+}
 #weiter-btn {
   background:white; color:#333; border:none;
   font-size:1.2rem; font-weight:bold;
@@ -81,6 +96,7 @@ footer { text-align:center; padding:1rem; background-color:var(--hauptfarbe); co
   main { padding:1rem; }
   .zitat { font-size:1rem; }
   #splash h1 { font-size:1.5rem; }
+  #splash p { font-size:1.6rem; }
 }
 </style>
 </head>
