@@ -153,18 +153,9 @@ footer { text-align:center; padding:1rem; background-color:var(--hauptfarbe); co
       sessionStorage.removeItem('hideSplashOnce');
     }
   } catch(e) {}
-  // 2) Fallback: kommt von eigener Seite (z.B. von Unterseite) -> auch überspringen
-  // Funktioniert auch bei file:// (host ist dann leer)
-  if (!hide) {
-    try {
-      if (document.referrer) {
-        var r = new URL(document.referrer, location.href);
-        if (r.host === location.host) hide = true;
-        // Bei lokalen Dateien: gleicher Ordner = interne Navigation
-        else if (location.protocol === 'file:' && r.protocol === 'file:') hide = true;
-      }
-    } catch(e) {}
-  }
+  // 2) KEIN Referrer-Check mehr:
+  // Tippen der Adresse oben (auch gleiche Seite) soll Willkommen IMMER zeigen.
+  // Nur echter Klick auf Startseite (Flag oben / ?from=nav) überspringt.
   if (hide) {
     var s = document.getElementById('splash');
     if (s) s.style.display = 'none';
