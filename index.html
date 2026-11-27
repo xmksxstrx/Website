@@ -130,18 +130,57 @@ footer { text-align:center; padding:1rem; background-color:var(--hauptfarbe); co
 </footer>
 
 <script>
-// Willkommens-Seite nur einmal pro Besuch zeigen:
-// Beim ersten Aufruf anzeigen, bei Klick auf "Startseite" in der Navi nicht mehr.
+// Willkommen nur bei direktem Aufruf zeigen, nicht bei Klick auf "Startseite":
+// - Direkteingabe / Bookmark / Google / neuer Tab -> anzeigen
+// - Klick auf Startseite-Link -> einmalig überspringen
 (function() {
+  var hide = false;
+  // 0) Extra-sicher: ?from=nav oder ?skip=1 in der URL -> immer überspringen
   try {
-    if (sessionStorage.getItem('splashSeen') === '1') {
-      var s = document.getElementById('splash');
-      if (s) s.style.display = 'none';
+    var q = new URLSearchParams(location.search);
+    if (q.has('from') || q.has('nav') || q.has('skip') || q.has('hidesplash')) {
+      hide = true;
+      // Parameter wieder aus der Adresszeile entfernen (sieht sauberer aus)
+      q.delete('from'); q.delete('nav'); q.delete('skip'); q.delete('hidesplash');
+      var clean = location.pathname + (q.toString() ? '?' + q.toString() : '') + location.hash;
+      history.replaceState(null, '', clean);
     }
   } catch(e) {}
-})();
+  try {
+    // 1) Flag von Navi-Klick (wird nur einmal verbraucht)
+    if (sessionStorage.getItem('hideSplashOnce') === '1') {
+      hide = true;
+      sessionStorage.removeItem('hideSplashOnce');
+    }
+  } catch(e) {}
+  // 2) Fallback: kommt von eigener Seite (z.B. von Unterseite) -> auch überspringen
+  // Funktioniert auch bei file:// (host ist dann leer)
+  if (!hide) {
+    try {
+      if (document.referrer) {
+        var r = new URL(document.referrer, location.href);
+        if (r.host === location.host) hide = true;
+        // Bei lokalen Dateien: gleicher Ordner = interne Navigation
+        else if (location.protocol === 'file:' && r.protocol === 'file:') hide = true;
+      }
+    } catch(e) {}
+  }
+  if (hide) {
+    var s = document.getElementById('splash');
+    if (s) s.style.display = 'none';
+  }
+  // Klicks auf Startseite markieren, damit der nächste Load weiß: überspringen
+  document.addEventListener('click', function(ev) {
+    var a = ev.target.closest ? ev.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    // alle Links die auf die Startseite zeigen (index.html, index.html?... , ./ , /)
+    if (/index\.html/i.test(href) || href === './' || href === '/' || href === '#') {
+      try { sessionStorage.setItem('hideSplashOnce', '1'); } catch(e) {}
+    }
+  });
+})();;
 function weiter() {
-  try { sessionStorage.setItem('splashSeen', '1'); } catch(e) {}
   document.getElementById('splash').classList.add('hidden');
   setTimeout(function() {
     document.getElementById('splash').style.display = 'none';
@@ -149,5 +188,5 @@ function weiter() {
 }
 </script>
 
-<script>window.__CF$cv$params={r:'a5e7bff158abe0d9',t:'MTc5NTM0ODU3NA==',u:'01a2031d340974a89397508a1e1b98bf',ut:'YOTQeZwDLsqYKf.r.dc8d7xIugw8nutdVbPQc2H4.PE-1795348575-1.2.1.1-9bw.A67bZavVIlYd42Aeo_Vozrb70a.sBMfdlOccLl6OA5eNkyYJLHXYI0LsnJpGQnG0ZF37BO1UJ1r3.Aaqxq.OaGvXG2bTFBfLHEr1.Sk',i:60};(function(){if(!document.body)return;var l=window.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/precursor/main.js?ray=a5e7bff158abe0d9',s=document.createElement('script');s.src=o?new URL(u,o).href:u;document.head.appendChild(s);})();</script><script>window.__CF$cv$params={r:'a611ab949d6bbce2',t:'MTc5NTc4ODE0Mg==',u:'01a21d5078f572f99b5e88ea2beb6fb0',ut:'9m81M1dC2h1_krvsdDxofQp1401YXQ1kvBQJuzxBqwY-1795788142-1.2.1.1-__oGjAwGz9w3LL0t1r1CAfvZwdIKkLHpshWT5pE5.QRz.sD5Wq1M79yPOj8HasP884PTPfEcoI_j4EjFILVjc8GvC4_u6.6hWh46oL.k6vQ',i:60};(function(){if(!document.body)return;var l=window.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/precursor/main.js?ray=a611ab949d6bbce2',s=document.createElement('script');s.src=o?new URL(u,o).href:u;document.head.appendChild(s);})();</script><script>window.__CF$cv$params={r:'a612e3e6c85acc0f',t:'MTc5NTgwMDkzNQ==',u:'01a21e13ac6f700ba259b54089f98fe6',ut:'1_5u0mS9brM7OJ4Lk6IuzkV7MVwI4JvjgiGjj_EvAFY-1795800935-1.2.1.1-7KCgsQ0VmTTl4a40lX315mI.crJAtyHZDpIetvCxN11DJodMGyoj.D6.s7gzAUk55YNyjZx8SElZXfVEWaVb3pqZoFGvOUJ48Lv.TKz5Gg4',i:60};(function(){if(!document.body)return;var l=window.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/precursor/main.js?ray=a612e3e6c85acc0f',s=document.createElement('script');s.src=o?new URL(u,o).href:u;document.head.appendChild(s);})();</script></body>
+<script>window.__CF$cv$params={r:'a5e7bff158abe0d9',t:'MTc5NTM0ODU3NA==',u:'01a2031d340974a89397508a1e1b98bf',ut:'YOTQeZwDLsqYKf.r.dc8d7xIugw8nutdVbPQc2H4.PE-1795348575-1.2.1.1-9bw.A67bZavVIlYd42Aeo_Vozrb70a.sBMfdlOccLl6OA5eNkyYJLHXYI0LsnJpGQnG0ZF37BO1UJ1r3.Aaqxq.OaGvXG2bTFBfLHEr1.Sk',i:60};(function(){if(!document.body)return;var l=window.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/precursor/main.js?ray=a5e7bff158abe0d9',s=document.createElement('script');s.src=o?new URL(u,o).href:u;document.head.appendChild(s);})();</script><script>window.__CF$cv$params={r:'a611ab949d6bbce2',t:'MTc5NTc4ODE0Mg==',u:'01a21d5078f572f99b5e88ea2beb6fb0',ut:'9m81M1dC2h1_krvsdDxofQp1401YXQ1kvBQJuzxBqwY-1795788142-1.2.1.1-__oGjAwGz9w3LL0t1r1CAfvZwdIKkLHpshWT5pE5.QRz.sD5Wq1M79yPOj8HasP884PTPfEcoI_j4EjFILVjc8GvC4_u6.6hWh46oL.k6vQ',i:60};(function(){if(!document.body)return;var l=window.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/precursor/main.js?ray=a611ab949d6bbce2',s=document.createElement('script');s.src=o?new URL(u,o).href:u;document.head.appendChild(s);})();</script></body>
 </html>

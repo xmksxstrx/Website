@@ -196,6 +196,17 @@
 <footer>
   &copy; 2025 Kameos Naturheilpraxis für Osteopathie - Kerstin Kammhuber | Impressum
 </footer>
+<!-- Navi-Merker: Klick auf Startseite -> Willkommen auf Startseite überspringen -->
+<script>
+document.addEventListener('click', function(ev) {
+  var a = ev.target.closest ? ev.target.closest('a[href]') : null;
+  if (!a) return;
+  var href = a.getAttribute('href') || '';
+  if (/index\.html/i.test(href) || href === './' || href === '/' ) {
+    try { sessionStorage.setItem('hideSplashOnce', '1'); } catch(e) {}
+  }
+});
+</script>
 </body>
 </html>
 
