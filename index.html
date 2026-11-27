@@ -104,7 +104,7 @@ footer { text-align:center; padding:1rem; background-color:var(--hauptfarbe); co
 </header>
 
 <nav>
-<a href="index.html">Startseite</a>
+<a href="index.html?from=nav">Startseite</a>
 <a href="Über Mich.html">Über Mich</a>
 <a href="Was ist Ostheopathie.html">Was ist Osteopathie?</a>
 <a href="Wie wirkt die Osteopathie.html">Wie wirkt die Osteopathie?</a>
@@ -135,42 +135,42 @@ footer { text-align:center; padding:1rem; background-color:var(--hauptfarbe); co
 // - Klick auf Startseite-Link -> einmalig überspringen
 (function() {
   var hide = false;
-  // 0) Extra-sicher: ?from=nav oder ?skip=1 in der URL -> immer überspringen
+  // WEG 1 (sicher): ?from=nav in URL -> Navi-Klick -> überspringen + URL säubern
   try {
     var q = new URLSearchParams(location.search);
-    if (q.has('from') || q.has('nav') || q.has('skip') || q.has('hidesplash')) {
+    if (q.has('from') || q.has('nav') || q.has('skip')) {
       hide = true;
-      // Parameter wieder aus der Adresszeile entfernen (sieht sauberer aus)
       q.delete('from'); q.delete('nav'); q.delete('skip'); q.delete('hidesplash');
-      var clean = location.pathname + (q.toString() ? '?' + q.toString() : '') + location.hash;
-      history.replaceState(null, '', clean);
+      var clean = location.pathname.split('/').pop();
+      if (!clean) clean = 'index.html';
+      var rest = q.toString() ? '?' + q.toString() : '';
+      history.replaceState(null, '', clean + rest + location.hash);
     }
   } catch(e) {}
-  try {
-    // 1) Flag von Navi-Klick (wird nur einmal verbraucht)
-    if (sessionStorage.getItem('hideSplashOnce') === '1') {
-      hide = true;
-      sessionStorage.removeItem('hideSplashOnce');
-    }
-  } catch(e) {}
-  // 2) KEIN Referrer-Check mehr:
-  // Tippen der Adresse oben (auch gleiche Seite) soll Willkommen IMMER zeigen.
-  // Nur echter Klick auf Startseite (Flag oben / ?from=nav) überspringt.
+  // WEG 2 (Backup): Einmal-Flag vom Klick-Skript
+  if (!hide) {
+    try {
+      if (sessionStorage.getItem('hideSplashOnce') === '1') {
+        hide = true;
+        sessionStorage.removeItem('hideSplashOnce');
+      }
+    } catch(e) {}
+  }
+  // SONST: Adresse getippt / neu geöffnet / Reload -> IMMER zeigen (hide bleibt false)
   if (hide) {
     var s = document.getElementById('splash');
     if (s) s.style.display = 'none';
   }
-  // Klicks auf Startseite markieren, damit der nächste Load weiß: überspringen
+  // Klicks auf Startseite markieren (Backup, falls ?from=nav mal fehlt)
   document.addEventListener('click', function(ev) {
     var a = ev.target.closest ? ev.target.closest('a[href]') : null;
     if (!a) return;
     var href = a.getAttribute('href') || '';
-    // alle Links die auf die Startseite zeigen (index.html, index.html?... , ./ , /)
-    if (/index\.html/i.test(href) || href === './' || href === '/' || href === '#') {
+    if (/index\.html/i.test(href)) {
       try { sessionStorage.setItem('hideSplashOnce', '1'); } catch(e) {}
     }
   });
-})();;
+})();;;
 function weiter() {
   document.getElementById('splash').classList.add('hidden');
   setTimeout(function() {
